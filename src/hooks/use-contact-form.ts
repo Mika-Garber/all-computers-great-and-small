@@ -6,6 +6,7 @@ export interface ContactFormValues {
   email: string;
   phone: string;
   message: string;
+  website: string;
 }
 
 const initialValues: ContactFormValues = {
@@ -13,6 +14,7 @@ const initialValues: ContactFormValues = {
   email: '',
   phone: '',
   message: '',
+  website: '',
 };
 
 function hasContactMethod(values: ContactFormValues) {
@@ -49,6 +51,12 @@ export function useContactForm() {
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setErrorMessage('');
+
+    if (values.website.trim().length > 0) {
+      setIsSubmitted(true);
+      setValues(initialValues);
+      return;
+    }
 
     if (!values.name.trim()) {
       setErrorMessage('Please enter your name.');

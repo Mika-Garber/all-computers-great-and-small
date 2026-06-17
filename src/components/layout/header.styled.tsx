@@ -30,13 +30,13 @@ export const LogoLink = styled('a')({
 });
 
 export const LogoImage = styled('img')(({ theme }) => ({
-  height: 48,
+  height: 54,
   width: 'auto',
-  maxWidth: 220,
+  maxWidth: 240,
   objectFit: 'contain',
   [theme.breakpoints.up('md')]: {
-    height: 56,
-    maxWidth: 280,
+    height: 64,
+    maxWidth: 300,
   },
 }));
 

@@ -3,7 +3,9 @@ import Stack from '@mui/material/Stack';
 import Paper from '@mui/material/Paper';
 import { aboutContent } from '../../content/site-content';
 import { assetUrls, contactInfo } from '../../constants/contact';
+import { pageSeoByPath } from '../../constants/seo';
 import { PageHero } from '../../components/page-hero/page-hero';
+import { PageMeta } from '../../components/page-meta/page-meta';
 import { CtaButton } from '../../components/cta-button/cta-button';
 import { PageSection } from '../home/home-page.styled';
 import {
@@ -13,8 +15,12 @@ import {
 } from './about-page.styled';
 
 export function AboutPage() {
+  const seo = pageSeoByPath['/about'];
+
   return (
     <>
+      <PageMeta title={seo.title} description={seo.description} path={seo.path} />
+
       <PageHero title="About Me" subtitle={aboutContent.tagline} />
 
       <PageSection>
@@ -34,6 +40,7 @@ export function AboutPage() {
                 src={assetUrls.theresaPhoto}
                 alt={`${contactInfo.ownerName} with her dog`}
                 loading="lazy"
+                decoding="async"
               />
               <Stack spacing={1} sx={{ textAlign: { xs: 'center', sm: 'left' } }}>
                 <AboutNameLink

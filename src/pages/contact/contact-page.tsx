@@ -2,13 +2,19 @@ import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import { assetUrls, contactInfo } from '../../constants/contact';
+import { pageSeoByPath } from '../../constants/seo';
 import { PageHero } from '../../components/page-hero/page-hero';
+import { PageMeta } from '../../components/page-meta/page-meta';
 import { ContactForm } from '../../components/contact-form/contact-form';
 import { PageSection } from '../home/home-page.styled';
 
 export function ContactPage() {
+  const seo = pageSeoByPath['/contact'];
+
   return (
     <>
+      <PageMeta title={seo.title} description={seo.description} path={seo.path} />
+
       <PageHero
         title="Contact"
         subtitle="Send a message and we can chat over email or phone"
@@ -36,6 +42,7 @@ export function ContactPage() {
               src={assetUrls.pigeons}
               alt="Decorative pigeon illustration"
               loading="lazy"
+              decoding="async"
               sx={{ width: '100%', maxWidth: 360, borderRadius: 2 }}
             />
 

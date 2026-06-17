@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://all-computers-great-and-small.vercel.app/sitemap.xml

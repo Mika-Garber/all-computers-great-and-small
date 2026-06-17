@@ -1,24 +1,36 @@
 import { createTheme } from '@mui/material/styles';
 
+/** Palette inspired by allcomputersgreatandsmall.com — warm accent + blue, modernized */
 export const brandColors = {
-  cream: '#eae6dd',
+  cream: '#f7f3ec',
   charcoal: '#2d2d2a',
-  teal: '#03645f',
-  gold: '#edd286',
+  orange: '#e8732a',
+  orangeDark: '#c45a1f',
+  orangeLight: '#f5a66a',
   blue: '#0559b5',
+  blueDark: '#04408a',
   white: '#ffffff',
+} as const;
+
+export const brandRgba = {
+  orangeBand: 'rgba(232, 115, 42, 0.18)',
+  orangeBandStrong: 'rgba(232, 115, 42, 0.28)',
+  orangeHover: 'rgba(232, 115, 42, 0.1)',
+  blueBand: 'rgba(5, 89, 181, 0.08)',
+  blueGlow: 'rgba(5, 89, 181, 0.12)',
 } as const;
 
 export const theme = createTheme({
   palette: {
     primary: {
-      main: brandColors.teal,
-      light: '#048a82',
-      dark: '#024a46',
+      main: brandColors.orange,
+      light: brandColors.orangeLight,
+      dark: brandColors.orangeDark,
       contrastText: brandColors.white,
     },
     secondary: {
       main: brandColors.blue,
+      dark: brandColors.blueDark,
       contrastText: brandColors.white,
     },
     background: {
@@ -75,6 +87,16 @@ export const theme = createTheme({
           display: 'flex',
           flexDirection: 'column',
         },
+        ':focus-visible': {
+          outlineOffset: 2,
+        },
+        'a:focus-visible, button:focus-visible, [tabindex]:focus-visible': {
+          outline: `3px solid ${brandColors.blue}`,
+          outlineOffset: 2,
+        },
+        '[id]': {
+          scrollMarginTop: 88,
+        },
       },
     },
     MuiButton: {
@@ -86,6 +108,31 @@ export const theme = createTheme({
           boxShadow: 'none',
           '&:hover': {
             boxShadow: 'none',
+          },
+          '&:focus-visible': {
+            outline: `3px solid ${brandColors.blue}`,
+            outlineOffset: 2,
+          },
+        },
+      },
+    },
+    MuiLink: {
+      styleOverrides: {
+        root: {
+          '&:focus-visible': {
+            outline: `3px solid ${brandColors.blue}`,
+            outlineOffset: 2,
+            borderRadius: 4,
+          },
+        },
+      },
+    },
+    MuiIconButton: {
+      styleOverrides: {
+        root: {
+          '&:focus-visible': {
+            outline: `3px solid ${brandColors.blue}`,
+            outlineOffset: 2,
           },
         },
       },

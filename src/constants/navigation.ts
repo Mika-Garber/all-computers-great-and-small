@@ -8,5 +8,7 @@ export const navItems: NavItem[] = [
   { label: 'Photo and Video Services', path: '/photo-and-video' },
   { label: 'Technical Services', path: '/technical-services' },
   { label: 'About Me', path: '/about' },
+  { label: 'My Columns', path: '/columns' },
+  { label: 'Resources', path: '/resources' },
   { label: 'Contact', path: '/contact' },
 ];

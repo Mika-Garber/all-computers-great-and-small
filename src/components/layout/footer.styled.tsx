@@ -3,8 +3,8 @@ import Box from '@mui/material/Box';
 
 export const FooterRoot = styled('footer')(({ theme }) => ({
   marginTop: 'auto',
-  backgroundColor: theme.palette.primary.main,
-  color: theme.palette.primary.contrastText,
+  backgroundColor: theme.palette.secondary.main,
+  color: theme.palette.secondary.contrastText,
   paddingTop: theme.spacing(6),
   paddingBottom: theme.spacing(4),
 }));
@@ -22,7 +22,7 @@ export const FooterInner = styled(Box)(({ theme }) => ({
 }));
 
 export const FooterLink = styled('a')(({ theme }) => ({
-  color: theme.palette.primary.contrastText,
+  color: theme.palette.secondary.contrastText,
   textDecoration: 'none',
   opacity: 0.92,
   '&:hover': {

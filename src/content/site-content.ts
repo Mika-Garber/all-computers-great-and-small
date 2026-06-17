@@ -24,11 +24,38 @@ export const homeIntro = {
   ],
 };
 
-export const testimonial = {
-  quote:
-    'Theresa has really transformed my computer skills. She is professional and so easy to work with. I refer to her as my technology therapist. She has saved me so much time and frustration on various projects!',
-  author: 'Christina F, Marblehead',
-};
+export interface Testimonial {
+  quote: string;
+  author: string;
+}
+
+export const testimonials: Testimonial[] = [
+  {
+    quote:
+      'Theresa has really transformed my computer skills. She is professional and so easy to work with. I refer to her as my technology therapist. She has saved me so much time and frustration on various projects!',
+    author: 'Christina Ferri',
+  },
+  {
+    quote:
+      'I highly recommend Theresa for all of your computer needs! She is extremely knowledgeable, flexible, and friendly. Anytime my small business needs help she jumps right in and solves our tech problems. 10/10 would recommend!',
+    author: 'Jessica Brown',
+  },
+  {
+    quote:
+      'Theresa has provided our company with the finest service for several years. Her technical knowledge and ability to solve problems and create solutions quickly are unmatched.',
+    author: 'Carl',
+  },
+  {
+    quote:
+      "Theresa's technological expertise is incredible. Not only is she an expert, but she is able to impart her knowledge in an easy to understand manner. She has much patience in dealing with those of us who have less experience in these areas.",
+    author: 'Jody Bucci',
+  },
+  {
+    quote:
+      "You've hit the jackpot if your path crosses with Theresa's! She is truly a whiz and it's a treat to see her brain operate on the rare occasion when she is stumped. Patient, creative, humble, as well as humorous and lovely to boot.",
+    author: 'Laurie',
+  },
+];
 
 export const servicePillars: ServicePillar[] = [
   {
@@ -122,6 +149,62 @@ export const tutoringTopics: TutoringTopic[] = [
     title: 'Max out your devices',
     description:
       'Find long-lost friends, play songs for free, explore social media, and discover what your phone or tablet can really do.',
+  },
+];
+
+export interface HowItWorksStep {
+  title: string;
+  description: string;
+}
+
+export const howItWorksSteps: HowItWorksStep[] = [
+  {
+    title: 'Reach out for a free consultation',
+    description:
+      'Call, text, or send a message. Theresa will listen to your questions and learn what you want to accomplish.',
+  },
+  {
+    title: 'Plan your session together',
+    description:
+      'Whether you have a list of topics or need help figuring out where to start, you will agree on a comfortable pace and format.',
+  },
+  {
+    title: 'Learn at your own speed',
+    description:
+      'Meet in your home, by phone, or over video chat. Sessions are one-on-one, patient, and tailored to your devices and goals.',
+  },
+  {
+    title: 'Come back anytime',
+    description:
+      'Technology keeps changing — Theresa is here for follow-up help, new questions, and ongoing support when you need it.',
+  },
+];
+
+export interface TrustHighlight {
+  title: string;
+  description: string;
+}
+
+export const trustHighlights: TrustHighlight[] = [
+  {
+    title: 'Free consultation',
+    description: 'Start with a no-pressure phone call to discuss your needs.',
+  },
+  {
+    title: 'Patient one-on-one help',
+    description: 'Personal attention at your pace — never rushed or jargon-heavy.',
+  },
+  {
+    title: 'North Shore local',
+    description: 'Based on the North Shore of Massachusetts with in-home visits nearby.',
+  },
+  {
+    title: '30+ years experience',
+    description: 'Decades of tutoring, teaching, and hands-on tech support.',
+  },
+  {
+    title: 'Phone, video & in-home',
+    description: 'Flexible support wherever you are most comfortable.',
   },
 ];
 

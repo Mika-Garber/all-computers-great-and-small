@@ -3,13 +3,19 @@ import Stack from '@mui/material/Stack';
 import Paper from '@mui/material/Paper';
 import { technicalServicesContent } from '../../content/site-content';
 import { contactInfo } from '../../constants/contact';
+import { pageSeoByPath } from '../../constants/seo';
 import { PageHero } from '../../components/page-hero/page-hero';
+import { PageMeta } from '../../components/page-meta/page-meta';
 import { CtaButton } from '../../components/cta-button/cta-button';
 import { PageSection } from '../home/home-page.styled';
 
 export function TechnicalServicesPage() {
+  const seo = pageSeoByPath['/technical-services'];
+
   return (
     <>
+      <PageMeta title={seo.title} description={seo.description} path={seo.path} />
+
       <PageHero
         title="Technical Services"
         subtitle="Practical fixes and creative projects for your devices"
@@ -45,8 +51,8 @@ export function TechnicalServicesPage() {
             elevation={0}
             sx={{
               p: 3,
-              bgcolor: 'rgba(237, 210, 134, 0.2)',
-              border: '1px solid rgba(237, 210, 134, 0.45)',
+              bgcolor: 'rgba(232, 115, 42, 0.12)',
+              border: '1px solid rgba(232, 115, 42, 0.28)',
             }}
           >
             <Typography variant="subtitle2" sx={{ fontWeight: 700, mb: 1 }}>

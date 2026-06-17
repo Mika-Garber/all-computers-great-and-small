@@ -7,6 +7,9 @@ import { PhotoVideoPage } from './pages/photo-video/photo-video-page';
 import { TechnicalServicesPage } from './pages/technical-services/technical-services-page';
 import { AboutPage } from './pages/about/about-page';
 import { ContactPage } from './pages/contact/contact-page';
+import { ColumnsPage } from './pages/columns/columns-page';
+import { ResourcesPage } from './pages/resources/resources-page';
+import { NotFoundPage } from './pages/not-found/not-found-page';
 
 export function App() {
   return (
@@ -19,7 +22,10 @@ export function App() {
           <Route path="photo-and-video" element={<PhotoVideoPage />} />
           <Route path="technical-services" element={<TechnicalServicesPage />} />
           <Route path="about" element={<AboutPage />} />
+          <Route path="columns" element={<ColumnsPage />} />
+          <Route path="resources" element={<ResourcesPage />} />
           <Route path="contact" element={<ContactPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

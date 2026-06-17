@@ -1,53 +1,77 @@
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
 import type { NegativesSection } from '../../content/photo-video-content';
 import {
   ComparisonImage,
-  ComparisonItem,
   NegativeStripImage,
-  NegativesBottomRow,
-  NegativesTopRow,
+  NegativesDescription,
+  NegativesStepBadge,
+  NegativesStepCard,
+  NegativesStepImageWrap,
+  NegativesStepsGrid,
 } from './photo-comparison.styled';
 
 interface NegativesToDigitalGalleryProps {
   section: NegativesSection;
 }
 
+const stepCaptionSx = {
+  fontSize: '0.8125rem',
+  color: 'text.secondary',
+  lineHeight: 1.55,
+  maxWidth: 280,
+} as const;
+
+const steps = [
+  { key: 'negative' as const, label: 'Original negative' },
+  { key: 'printScan' as const, label: 'Initial scan' },
+  { key: 'restored' as const, label: 'Restored final photo' },
+];
+
 export function NegativesToDigitalGallery({ section }: NegativesToDigitalGalleryProps) {
   return (
     <>
-      <NegativesTopRow>
-        <ComparisonItem>
-          <NegativeStripImage src={section.negative.src} alt={section.negative.alt} loading="lazy" />
-          <Typography variant="body2" sx={{ mt: 2 }}>
-            {section.negative.caption}
-          </Typography>
-        </ComparisonItem>
+      <NegativesStepsGrid>
+        {steps.map((step, index) => {
+          const item = section[step.key];
 
-        <ComparisonItem sx={{ alignItems: { xs: 'center', md: 'flex-start' }, textAlign: { xs: 'center', md: 'left' } }}>
-          <ComparisonImage
-            src={section.printScan.src}
-            alt={section.printScan.alt}
-            loading="lazy"
-            sx={{ maxWidth: { md: 420 } }}
-          />
-          <Typography variant="body2" sx={{ mt: 2, maxWidth: 420, lineHeight: 1.6 }}>
-            {section.printScan.caption}
-          </Typography>
-        </ComparisonItem>
-      </NegativesTopRow>
+          return (
+            <NegativesStepCard key={step.key}>
+              <NegativesStepBadge aria-hidden>{index + 1}</NegativesStepBadge>
+              <Typography variant="subtitle2" sx={{ fontWeight: 700, fontSize: '0.9375rem' }}>
+                {step.label}
+              </Typography>
+              <NegativesStepImageWrap>
+                {step.key === 'negative' ? (
+                  <NegativeStripImage
+                    src={item.src}
+                    alt={item.alt}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                ) : (
+                  <ComparisonImage
+                    src={item.src}
+                    alt={item.alt}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                )}
+              </NegativesStepImageWrap>
+              {item.caption ? (
+                <Typography variant="body2" sx={stepCaptionSx}>
+                  {item.caption}
+                </Typography>
+              ) : null}
+            </NegativesStepCard>
+          );
+        })}
+      </NegativesStepsGrid>
 
-      <NegativesBottomRow>
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.8 }}>
-            {section.description}
-          </Typography>
-        </Box>
-
-        <ComparisonItem>
-          <ComparisonImage src={section.restored.src} alt={section.restored.alt} loading="lazy" />
-        </ComparisonItem>
-      </NegativesBottomRow>
+      <NegativesDescription>
+        <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.7, fontSize: '0.9375rem' }}>
+          {section.description}
+        </Typography>
+      </NegativesDescription>
     </>
   );
 }

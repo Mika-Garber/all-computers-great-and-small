@@ -1,5 +1,6 @@
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
+import { brandColors, brandRgba } from '../../theme/theme';
 
 export const HeroRoot = styled(Box)(({ theme }) => ({
   position: 'relative',
@@ -30,7 +31,7 @@ export const HeroAccent = styled(Box)(({ theme }) => ({
   width: 280,
   height: 280,
   borderRadius: '50%',
-  backgroundColor: theme.palette.mode === 'light' ? 'rgba(237, 210, 134, 0.35)' : undefined,
+  backgroundColor: theme.palette.mode === 'light' ? brandRgba.blueGlow : undefined,
   pointerEvents: 'none',
 }));
 
@@ -45,10 +46,12 @@ export const HeroImage = styled('img')(({ theme }) => ({
   },
 }));
 
-export const PageHeroRoot = styled(Box)(({ theme }) => ({
-  background: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, #024a46 100%)`,
-  color: theme.palette.primary.contrastText,
-  paddingBlock: theme.spacing(6, 7),
+export const PageHeroRoot = styled(Box, {
+  shouldForwardProp: (prop) => prop !== 'compact',
+})<{ compact?: boolean }>(({ theme, compact }) => ({
+  background: `linear-gradient(135deg, ${theme.palette.secondary.main} 0%, ${brandColors.blueDark} 100%)`,
+  color: theme.palette.secondary.contrastText,
+  paddingBlock: compact ? theme.spacing(5, 5.5) : theme.spacing(6, 7),
   paddingInline: theme.spacing(3),
 }));
 

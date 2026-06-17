@@ -12,6 +12,7 @@ interface CtaButtonProps {
   fullWidth?: boolean;
   type?: 'button' | 'submit' | 'reset';
   disabled?: boolean;
+  download?: boolean;
 }
 
 function getVariantStyles(variant: NonNullable<CtaButtonProps['variant']>) {
@@ -19,23 +20,23 @@ function getVariantStyles(variant: NonNullable<CtaButtonProps['variant']>) {
     return {
       bgcolor: brandColors.blue,
       color: brandColors.white,
-      '&:hover': { bgcolor: '#044a96' },
+      '&:hover': { bgcolor: brandColors.blueDark },
     };
   }
 
   if (variant === 'outline') {
     return {
       bgcolor: 'transparent',
-      color: brandColors.teal,
-      border: `2px solid ${brandColors.teal}`,
-      '&:hover': { bgcolor: 'rgba(3, 100, 95, 0.08)' },
+      color: brandColors.orange,
+      border: `2px solid ${brandColors.orange}`,
+      '&:hover': { bgcolor: 'rgba(232, 115, 42, 0.1)' },
     };
   }
 
   return {
-    bgcolor: brandColors.teal,
+    bgcolor: brandColors.orange,
     color: brandColors.white,
-    '&:hover': { bgcolor: '#024a46' },
+    '&:hover': { bgcolor: brandColors.orangeDark },
   };
 }
 
@@ -48,6 +49,7 @@ export function CtaButton({
   fullWidth = false,
   type = 'button',
   disabled = false,
+  download = false,
 }: CtaButtonProps) {
   const sx = {
     borderRadius: 999,
@@ -80,6 +82,7 @@ export function CtaButton({
       <Button
         component="a"
         href={href}
+        download={download || undefined}
         size={size}
         fullWidth={fullWidth}
         target={isExternal ? '_blank' : undefined}

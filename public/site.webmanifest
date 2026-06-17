@@ -1,0 +1,23 @@
+{
+  "name": "All Computers Great and Small",
+  "short_name": "ACGS",
+  "description": "Personal computer tutoring and tech support on the North Shore Massachusetts.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f3ec",
+  "theme_color": "#0559b5",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

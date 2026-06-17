@@ -36,7 +36,13 @@ function NavLink({ path, label }: { path: string; label: string }) {
         whiteSpace: 'nowrap',
         fontSize: { lg: '0.9rem', xl: '0.95rem' },
         px: { lg: 1.5, xl: 2 },
+        ...(isActive && {
+          borderBottom: '2px solid',
+          borderColor: 'primary.main',
+          borderRadius: 0,
+        }),
       }}
+      aria-current={isActive ? 'page' : undefined}
     >
       {label}
     </Button>
@@ -45,6 +51,7 @@ function NavLink({ path, label }: { path: string; label: string }) {
 
 export function Header() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const location = useLocation();
   const scrollDirection = useScrollDirection();
   const isHeaderVisible = scrollDirection === 'up' || isDrawerOpen;
 
@@ -57,7 +64,7 @@ export function Header() {
       <StyledAppBar position="sticky" elevation={0} isVisible={isHeaderVisible}>
         <StyledToolbar>
           <RouterLink to="/" style={{ display: 'flex', alignItems: 'center', flexShrink: 0 }}>
-            <LogoImage src={assetUrls.logo} alt={contactInfo.businessName} />
+            <LogoImage src={assetUrls.logo} alt={contactInfo.businessName} decoding="async" />
           </RouterLink>
 
           <NavContainer>
@@ -94,25 +101,33 @@ export function Header() {
           </IconButton>
         </Box>
         <DrawerNavList>
-          {navItems.map((item) => (
-            <Link
-              key={item.path}
-              component={RouterLink}
-              to={item.path}
-              onClick={closeDrawer}
-              underline="none"
-              sx={{
-                color: 'text.primary',
-                fontWeight: 600,
-                py: 1.5,
-                px: 1,
-                borderRadius: 2,
-                '&:hover': { bgcolor: 'rgba(3, 100, 95, 0.08)' },
-              }}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navItems.map((item) => {
+            const isActive = location.pathname === item.path;
+
+            return (
+              <Link
+                key={item.path}
+                component={RouterLink}
+                to={item.path}
+                onClick={closeDrawer}
+                underline="none"
+                aria-current={isActive ? 'page' : undefined}
+                sx={{
+                  color: isActive ? 'primary.main' : 'text.primary',
+                  fontWeight: isActive ? 700 : 600,
+                  py: 1.5,
+                  px: 1.5,
+                  borderRadius: 0,
+                  borderBottom: isActive ? '2px solid' : '2px solid transparent',
+                  borderColor: isActive ? 'primary.main' : 'transparent',
+                  bgcolor: 'transparent',
+                  '&:hover': { bgcolor: 'rgba(232, 115, 42, 0.08)' },
+                }}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
           <Box sx={{ pt: 2 }}>
             <CtaButton href={contactInfo.phoneHref} variant="primary" fullWidth>
               Call Me

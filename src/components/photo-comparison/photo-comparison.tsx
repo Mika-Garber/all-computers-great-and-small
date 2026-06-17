@@ -10,6 +10,14 @@ interface PhotoComparisonGalleryProps {
   rows: PhotoComparisonRow[];
 }
 
+const captionSx = {
+  mt: 1.5,
+  maxWidth: 320,
+  lineHeight: 1.55,
+  fontSize: '0.8125rem',
+  color: 'text.secondary',
+} as const;
+
 function PhotoComparisonCell({
   item,
   compact = false,
@@ -19,11 +27,8 @@ function PhotoComparisonCell({
 }) {
   return (
     <ComparisonItem>
-      <ComparisonImage src={item.src} alt={item.alt} loading="lazy" compact={compact} />
-      <Typography
-        variant="body2"
-        sx={{ mt: 2, maxWidth: compact ? 280 : 360, lineHeight: 1.6, fontSize: compact ? '0.875rem' : undefined }}
-      >
+      <ComparisonImage src={item.src} alt={item.alt} loading="lazy" decoding="async" compact={compact} />
+      <Typography variant="body2" sx={{ ...captionSx, maxWidth: compact ? 260 : 320 }}>
         {item.caption}
       </Typography>
     </ComparisonItem>
